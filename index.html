@@ -4,337 +4,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Arnav Agrawal | Portfolio</title>
-
-    <meta name="description" content="Official portfolio of Arnav Agrawal, student developer from Bengaluru.">
-
-    <meta name="author" content="Arnav Agrawal">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
+    <title>Arnav | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-
-    <script defer src="https://unpkg.com/lucide@latest"></script>
-
-    <script defer src="script.js"></script>
 </head>
 
 <body>
 
-    <div class="gradient-bg"></div>
-    <div class="particles"></div>
+    <!-- Canvas for floating fire particles -->
+    <canvas id="fire-canvas"></canvas>
+    
+    <!-- Shading & heat gradient background overlay -->
+    <div class="bg-overlay"></div>
 
-    <!-- NAVBAR -->
+    <nav>
+        <div class="logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            Arnav<span>.</span>
+        </div>
 
-    <header>
-        <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
 
-            <div class="logo">
-                Arnav<span>.</span>
-            </div>
+        <div class="nav-controls">
+            <!-- Procedural audio toggling control -->
+            <button id="sound-toggle" class="sound-toggle-btn" title="Turn Ambient Sound On">
+                <!-- Volume icon SVG -->
+                <svg id="volume-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M15.54 8.46002C16.4774 9.39763 17.0042 10.669 17.0042 11.995C17.0042 13.3211 16.4774 14.5924 15.54 15.53" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M19.07 4.93005C20.9447 6.80529 21.9982 9.34839 21.9982 12C21.9982 14.6517 20.9447 17.1948 19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
 
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-
-            <div class="nav-actions">
-
-                <button id="themeToggle" class="theme-btn" aria-label="Toggle Theme">
-
-                    <i data-lucide="moon"></i>
-
-                </button>
-
-                <button id="menuBtn" class="menu-btn" aria-label="Open Menu">
-
-                    <i data-lucide="menu"></i>
-
-                </button>
-
-            </div>
-
-        </nav>
-    </header>
-
-    <!-- HERO -->
-
-    <section id="home" class="hero">
-
-        <div class="glass-card hero-card">
-
-            <div class="profile">
-
-                <div class="avatar">
-                    A
-                </div>
-
-                <div class="status">
-                    <i data-lucide="badge-check"></i>
-                    Available For Opportunities
-                </div>
-
-            </div>
-
-            <h1>
-                Arnav Agrawal
-            </h1>
-
-            <h2 id="typingText">
-                Student Developer
-            </h2>
-
-            <p class="hero-description">
-
-                Hi, I'm Arnav from Bengaluru.
-
-                I enjoy creating websites,
-                learning new technologies,
-                solving problems and listening carefully before speaking.
-
-                My greatest achievement so far?
-
-                Reading an entire page without getting distracted.
-
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-tag">Molten Code &amp; Sleek Design</div>
+            <h1>Hello, I'm <span>Arnav</span></h1>
+            <p class="hero-desc">
+                Creative Front-End Developer shaping raw code into blazing-fast, visually stunning, and highly interactive digital experiences.
             </p>
-
-            <div class="hero-buttons">
-
-                <a href="mailto:a.arnav@gmail.com" class="btn primary">
-
-                    <i data-lucide="mail"></i>
-                    Contact Me
-
-                </a>
-
-                <a href="#projects" class="btn secondary">
-
-                    <i data-lucide="arrow-down"></i>
-                    View Projects
-
-                </a>
-
+            <div class="btn-container">
+                <button id="btn">Ignite Contact</button>
+                <a href="#projects" class="cta-btn btn-secondary">View Work</a>
             </div>
-
         </div>
-
     </section>
 
-    <!-- STATS -->
-
-    <section class="stats">
-
-        <div class="stat-card">
-            <h3>14</h3>
-            <p>Years Old</p>
+    <section id="about">
+        <div class="section-header">
+            <div class="section-subtitle">Who I Am</div>
+            <h2>About <span>Me</span></h2>
         </div>
-
-        <div class="stat-card">
-            <h3>5+</h3>
-            <p>Projects Built</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>100%</h3>
-            <p>Curiosity</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>∞</h3>
-            <p>Things To Learn</p>
-        </div>
-
-    </section>
-
-    <!-- PROJECTS -->
-
-    <section id="projects" class="projects">
-
-        <div class="section-title">
-
-            <h2>Featured Projects</h2>
-            <p>Some things I've built and experimented with.</p>
-
-        </div>
-
-        <div class="project-grid">
-
-            <article class="project-card">
-
-                <div class="project-icon">
-                    <i data-lucide="globe"></i>
-                </div>
-
-                <h3>Portfolio Website</h3>
-
-                <p>
-                    A modern portfolio website
-                    built with HTML, CSS and JavaScript.
-                </p>
-
-                <div class="tags">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                </div>
-
-            </article>
-
-            <article class="project-card">
-
-                <div class="project-icon">
-                    <i data-lucide="droplets"></i>
-                </div>
-
-                <h3>Water Management Site</h3>
-
-                <p>
-                    Responsive business website
-                    focused on water conservation.
-                </p>
-
-                <div class="tags">
-                    <span>Frontend</span>
-                    <span>UI Design</span>
-                </div>
-
-            </article>
-
-            <article class="project-card">
-
-                <div class="project-icon">
-                    <i data-lucide="code"></i>
-                </div>
-
-                <h3>Learning Projects</h3>
-
-                <p>
-                    Small experiments to improve
-                    development skills every day.
-                </p>
-
-                <div class="tags">
-                    <span>Practice</span>
-                    <span>Learning</span>
-                </div>
-
-            </article>
-
-        </div>
-
-    </section>
-
-    <!-- SKILLS -->
-
-    <section id="skills" class="skills">
-
-        <div class="section-title">
-
-            <h2>Skills</h2>
-            <p>Technologies and strengths.</p>
-
-        </div>
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-                <i data-lucide="layout"></i>
-                <h3>Frontend</h3>
-                <p>HTML, CSS, JavaScript</p>
-            </div>
-
-            <div class="skill-card">
-                <i data-lucide="brain"></i>
-                <h3>Problem Solving</h3>
-                <p>Finding simple solutions</p>
-            </div>
-
-            <div class="skill-card">
-                <i data-lucide="ear"></i>
-                <h3>Good Listener</h3>
-                <p>Listening before acting</p>
-            </div>
-
-            <div class="skill-card">
-                <i data-lucide="book-open"></i>
-                <h3>Learning</h3>
-                <p>Always improving skills</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ABOUT -->
-
-    <section id="about" class="about">
 
         <div class="glass-card">
-
-            <div class="section-title">
-
-                <h2>About Me</h2>
-
-            </div>
-
-            <p>
-
-                I am Arnav Agrawal, a student from CHV
-                based in Bengaluru.
-
-                I enjoy web development,
-                exploring technology and creating projects
-                that help me learn new concepts.
-
+            <p style="margin-bottom: 35px; font-size: 1.1rem; line-height: 1.8;">
+                I am a front-end developer obsessed with crafting responsive, premium user interfaces that push modern browsers to their limits. Like forging steel, I combine aesthetic layouts with snappy interactions to build memorable experiences.
             </p>
 
-            <div class="about-grid">
-
-                <div class="info-box">
-                    <i data-lucide="map-pin"></i>
-                    Bengaluru
+            <h3 style="font-size: 1.5rem; margin-bottom: 25px; color: var(--gold-flame); text-shadow: var(--fire-glow-sm);">Core Skills</h3>
+            <div class="skills-container">
+                <!-- HTML5 / CSS3 -->
+                <div class="skill-bar-card">
+                    <div class="skill-info">
+                        <span class="skill-name">HTML5 / CSS3</span>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-progress-bg">
+                        <div class="skill-progress-fill" data-width="95%"></div>
+                    </div>
                 </div>
 
-                <div class="info-box">
-                    <i data-lucide="school"></i>
-                    CHV School
+                <!-- JavaScript (ES6+) -->
+                <div class="skill-bar-card">
+                    <div class="skill-info">
+                        <span class="skill-name">JavaScript (ES6+)</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-progress-bg">
+                        <div class="skill-progress-fill" data-width="90%"></div>
+                    </div>
                 </div>
 
-                <div class="info-box">
-                    <i data-lucide="mail"></i>
-                    a.arnav@gmail.com
+                <!-- React / Frameworks -->
+                <div class="skill-bar-card">
+                    <div class="skill-info">
+                        <span class="skill-name">React / Next.js</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="skill-progress-bg">
+                        <div class="skill-progress-fill" data-width="85%"></div>
+                    </div>
                 </div>
 
-                <div class="info-box">
-                    <i data-lucide="award"></i>
-                    Documentation Reader
+                <!-- Interactive UI / Canvas -->
+                <div class="skill-bar-card">
+                    <div class="skill-info">
+                        <span class="skill-name">Creative UX / Canvas</span>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-progress-bg">
+                        <div class="skill-progress-fill" data-width="95%"></div>
+                    </div>
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-    <!-- FOOTER -->
+    <section id="projects">
+        <div class="section-header">
+            <div class="section-subtitle">My Work</div>
+            <h2>Featured <span>Projects</span></h2>
+        </div>
+
+        <div class="projects">
+            <div class="card">
+                <div class="card-num">01</div>
+                <h3>Weather App</h3>
+                <p>A dynamic application detailing live climate metrics, featuring custom wind vector animations and heatmaps.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-num">02</div>
+                <h3>Personal Portfolio</h3>
+                <p>The highly interactive, Web Audio-enabled developer landing experience themed with Ghost Rider aesthetics.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-num">03</div>
+                <h3>Analytics Dashboard</h3>
+                <p>A premium dark mode control panel displaying heavy real-time chart tracking, micro-animations, and data grids.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-subtitle">Get In Touch</div>
+            <h2>Ignite <span>Connection</span></h2>
+        </div>
+
+        <div class="glass-card">
+            <p style="margin-bottom: 30px;">
+                Have a project in mind or want to collaborate on building next-generation web applications? Drop me a line, and let's create something legendary.
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <!-- Email SVG -->
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/>
+                    </svg>
+                    <span>arnav@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <!-- Phone SVG -->
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                    </svg>
+                    <span>+91 9876543210</span>
+                </div>
+            </div>
+            
+            <button onclick="window.location.href='mailto:arnav@gmail.com'">Send Email</button>
+        </div>
+    </section>
 
     <footer>
-
-        <p>
-            © 2026 Arnav Agrawal.
-            Built with HTML, CSS & JavaScript.
-        </p>
-
+        <p>&copy; <span id="year">2026</span> Arnav. All rights reserved. Crafted in the fires of <span>HTML, CSS &amp; JS</span>.</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 
 </html>
