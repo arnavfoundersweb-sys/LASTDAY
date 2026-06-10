@@ -232,6 +232,8 @@ if (canvas && ctx) {
   window.addEventListener("resize", resizeCanvas);
   resizeCanvas();
 
+  let isMouseDown = false;
+
   // Mouse move tracks
   window.addEventListener("mousemove", (e) => {
     mouse.x = e.clientX;
@@ -246,6 +248,17 @@ if (canvas && ctx) {
 
   window.addEventListener("mouseleave", () => {
     mouse.active = false;
+  });
+
+  window.addEventListener("mousedown", (e) => {
+    isMouseDown = true;
+    if (e.target.tagName !== "BUTTON" && e.target.tagName !== "A" && window.spawnSparks) {
+      window.spawnSparks(e.clientX, e.clientY, 15);
+    }
+  });
+
+  window.addEventListener("mouseup", () => {
+    isMouseDown = false;
   });
 
   // Ember particle representation
@@ -277,7 +290,7 @@ if (canvas && ctx) {
       this.x += Math.sin(this.wobbleTime) * this.wobbleRange + this.speedX;
       this.life--;
 
-      // Push logic on mouse coordinates
+      // Push/Pull logic on mouse coordinates
       if (mouse.active) {
         const dx = this.x - mouse.x;
         const dy = this.y - mouse.y;
@@ -287,8 +300,15 @@ if (canvas && ctx) {
           const force = (mouse.radius - distance) / mouse.radius;
           const angle = Math.atan2(dy, dx);
           
-          this.x += Math.cos(angle) * force * 2.5;
-          this.y += Math.sin(angle) * force * 1.2;
+          if (isMouseDown) {
+            // Attract mode: pull sparks into the cursor!
+            this.x -= Math.cos(angle) * force * 3.5;
+            this.y -= Math.sin(angle) * force * 2.5;
+          } else {
+            // Repel mode: push sparks away
+            this.x += Math.cos(angle) * force * 2.5;
+            this.y += Math.sin(angle) * force * 1.2;
+          }
         }
       }
 
@@ -489,3 +509,53 @@ revealElements.forEach(element => {
   element.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
   revealObserver.observe(element);
 });
+
+// ==========================================================================
+// MOBILE MENU SLIDE-OUT TOGGLE
+// ==========================================================================
+const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+const mobileNavOverlay = document.getElementById("mobile-nav-overlay");
+const mobileLinks = document.querySelectorAll(".mobile-link");
+
+if (mobileMenuBtn && mobileNavOverlay) {
+  mobileMenuBtn.addEventListener("click", () => {
+    mobileMenuBtn.classList.toggle("active");
+    mobileNavOverlay.classList.toggle("active");
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenuBtn.classList.remove("active");
+      mobileNavOverlay.classList.remove("active");
+    });
+  });
+}
+
+// ==========================================================================
+// ENTRY IGNITION OVERLAY INTERACTION
+// ==========================================================================
+const ignitionOverlay = document.getElementById("ignition-overlay");
+const overlayIgniteBtn = document.getElementById("overlay-ignite-btn");
+
+if (overlayIgniteBtn && ignitionOverlay) {
+  overlayIgniteBtn.addEventListener("click", () => {
+    // Start procedural fire audio synth on user interaction
+    synth.start();
+    if (soundToggle) {
+      soundToggle.classList.add("sound-on");
+      soundToggle.title = "Turn Ambient Sound Off";
+    }
+
+    // Explode massive burst of sparks from button coordinates
+    const rect = overlayIgniteBtn.getBoundingClientRect();
+    const btnCenterX = rect.left + rect.width / 2;
+    const btnCenterY = rect.top + rect.height / 2;
+    
+    if (window.spawnSparks) {
+      window.spawnSparks(btnCenterX, btnCenterY, 90);
+    }
+
+    // Fade out overlay
+    ignitionOverlay.classList.add("fade-out");
+  });
+}

@@ -7,12 +7,21 @@
     <title>Arnav | Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
+    <!-- Entry Ignition Overlay -->
+    <div id="ignition-overlay">
+        <div class="overlay-content">
+            <div class="warning-tag">Warning: Molten Levels Detected</div>
+            <h2 class="overlay-title">Arnav<span>.</span></h2>
+            <p class="overlay-desc">Experience the portfolio in full interactive hellfire &amp; ambient sound.</p>
+            <button id="overlay-ignite-btn">Ignite Engine</button>
+        </div>
+    </div>
 
     <!-- Canvas for floating fire particles -->
     <canvas id="fire-canvas"></canvas>
-    
+
     <!-- Shading & heat gradient background overlay -->
     <div class="bg-overlay"></div>
 
@@ -21,7 +30,7 @@
             Arnav<span>.</span>
         </div>
 
-        <ul>
+        <ul class="nav-links-desktop">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -29,24 +38,45 @@
         </ul>
 
         <div class="nav-controls">
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <!-- Procedural audio toggling control -->
             <button id="sound-toggle" class="sound-toggle-btn" title="Turn Ambient Sound On">
                 <!-- Volume icon SVG -->
                 <svg id="volume-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                    <path d="M15.54 8.46002C16.4774 9.39763 17.0042 10.669 17.0042 11.995C17.0042 13.3211 16.4774 14.5924 15.54 15.53" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M19.07 4.93005C20.9447 6.80529 21.9982 9.34839 21.9982 12C21.9982 14.6517 20.9447 17.1948 19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="currentColor" stroke-width="2"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M15.54 8.46002C16.4774 9.39763 17.0042 10.669 17.0042 11.995C17.0042 13.3211 16.4774 14.5924 15.54 15.53"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path
+                        d="M19.07 4.93005C20.9447 6.80529 21.9982 9.34839 21.9982 12C21.9982 14.6517 20.9447 17.1948 19.07 19.07"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </button>
         </div>
     </nav>
 
+    <!-- Mobile Nav Overlay -->
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <ul>
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#projects" class="mobile-link">Projects</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+    </div>
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-tag">Molten Code &amp; Sleek Design</div>
             <h1>Hello, I'm <span>Arnav</span></h1>
             <p class="hero-desc">
-                Creative Front-End Developer shaping raw code into blazing-fast, visually stunning, and highly interactive digital experiences.
+                Creative Front-End Developer shaping raw code into blazing-fast, visually stunning, and highly
+                interactive digital experiences.
             </p>
             <div class="btn-container">
                 <button id="btn">Ignite Contact</button>
@@ -63,10 +93,15 @@
 
         <div class="glass-card">
             <p style="margin-bottom: 35px; font-size: 1.1rem; line-height: 1.8;">
-                I am a front-end developer obsessed with crafting responsive, premium user interfaces that push modern browsers to their limits. Like forging steel, I combine aesthetic layouts with snappy interactions to build memorable experiences.
+                I am a front-end developer obsessed with crafting responsive,
+                premium user interfaces that push modern browsers to their limits.
+                Like forging steel, I combine aesthetic layouts with snappy interactions to
+                build memorable experiences.
             </p>
 
-            <h3 style="font-size: 1.5rem; margin-bottom: 25px; color: var(--gold-flame); text-shadow: var(--fire-glow-sm);">Core Skills</h3>
+            <h3
+                style="font-size: 1.5rem; margin-bottom: 25px; color: var(--gold-flame); text-shadow: var(--fire-glow-sm);">
+                Core Skills</h3>
             <div class="skills-container">
                 <!-- HTML5 / CSS3 -->
                 <div class="skill-bar-card">
@@ -125,19 +160,22 @@
             <div class="card">
                 <div class="card-num">01</div>
                 <h3>Weather App</h3>
-                <p>A dynamic application detailing live climate metrics, featuring custom wind vector animations and heatmaps.</p>
+                <p>A dynamic application detailing live climate metrics, featuring custom wind vector animations and
+                    heatmaps.</p>
             </div>
 
             <div class="card">
                 <div class="card-num">02</div>
                 <h3>Personal Portfolio</h3>
-                <p>The highly interactive, Web Audio-enabled developer landing experience themed with Ghost Rider aesthetics.</p>
+                <p>The highly interactive, Web Audio-enabled developer landing experience themed with Ghost Rider
+                    aesthetics.</p>
             </div>
 
             <div class="card">
                 <div class="card-num">03</div>
                 <h3>Analytics Dashboard</h3>
-                <p>A premium dark mode control panel displaying heavy real-time chart tracking, micro-animations, and data grids.</p>
+                <p>A premium dark mode control panel displaying heavy real-time chart tracking, micro-animations, and
+                    data grids.</p>
             </div>
         </div>
     </section>
@@ -150,31 +188,35 @@
 
         <div class="glass-card">
             <p style="margin-bottom: 30px;">
-                Have a project in mind or want to collaborate on building next-generation web applications? Drop me a line, and let's create something legendary.
+                Have a project in mind or want to collaborate on building next-generation web applications? Drop me a
+                line, and let's create something legendary.
             </p>
             <div class="contact-info">
                 <div class="contact-item">
                     <!-- Email SVG -->
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/>
+                        <path
+                            d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z" />
                     </svg>
                     <span>arnav@gmail.com</span>
                 </div>
                 <div class="contact-item">
                     <!-- Phone SVG -->
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                        <path
+                            d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
                     </svg>
                     <span>+91 9876543210</span>
                 </div>
             </div>
-            
+
             <button onclick="window.location.href='mailto:arnav@gmail.com'">Send Email</button>
         </div>
     </section>
 
     <footer>
-        <p>&copy; <span id="year">2026</span> Arnav. All rights reserved. Crafted in the fires of <span>HTML, CSS &amp; JS</span>.</p>
+        <p>&copy; <span id="year">2026</span> Arnav. All rights reserved. Crafted in the fires of <span>HTML, CSS &amp;
+                JS</span>.</p>
     </footer>
 
     <script src="script.js"></script>

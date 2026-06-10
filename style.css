@@ -805,8 +805,12 @@ footer span {
         padding: 15px 5%;
     }
     
-    nav ul {
-        display: none; /* Can be hidden or toggled on mobile, let's make a modern bottom nav or small toggle in javascript if needed */
+    .nav-links-desktop {
+        display: none !important;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
     }
     
     /* We will implement a responsive vertical layout */
@@ -849,4 +853,176 @@ footer span {
         width: 100%;
         text-align: center;
     }
+}
+
+/* ==========================================================================
+   ENTRY IGNITION OVERLAY
+   ========================================================================== */
+#ignition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--obsidian-bg);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#ignition-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.08);
+}
+
+.overlay-content {
+    text-align: center;
+    max-width: 520px;
+    width: 90%;
+    padding: 40px;
+    background: rgba(18, 18, 22, 0.6);
+    border: 1px solid var(--border-fire-subtle);
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.warning-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--primary-fire);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: var(--fire-glow-sm);
+    font-weight: 600;
+}
+
+.overlay-title {
+    font-size: 3.8rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    letter-spacing: 0.1em;
+}
+
+.overlay-title span {
+    color: var(--primary-fire);
+    text-shadow: var(--fire-glow-md);
+}
+
+.overlay-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+#overlay-ignite-btn {
+    padding: 18px 45px;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    animation: pulseButtonGlow 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseButtonGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(255, 85, 0, 0.4);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(255, 85, 0, 0.9), 0 0 10px rgba(255, 183, 0, 0.6);
+        transform: scale(1.03);
+    }
+}
+
+/* ==========================================================================
+   MOBILE NAVIGATION & HAMBURGER
+   ========================================================================== */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1500;
+    box-shadow: none;
+}
+
+.mobile-menu-btn:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.mobile-menu-btn .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 1px;
+    transition: var(--transition-smooth);
+}
+
+.mobile-menu-btn.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: var(--primary-fire);
+}
+
+.mobile-menu-btn.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: var(--primary-fire);
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(7, 7, 9, 0.98);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition-smooth);
+    border-left: 1px solid var(--border-fire-subtle);
+}
+
+.mobile-nav-overlay.active {
+    right: 0;
+}
+
+.mobile-nav-overlay ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.mobile-nav-overlay a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.2rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: var(--transition-smooth);
+}
+
+.mobile-nav-overlay a:hover {
+    color: var(--gold-flame);
+    text-shadow: var(--fire-glow-md);
 }
